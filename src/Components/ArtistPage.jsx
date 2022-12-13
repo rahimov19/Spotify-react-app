@@ -2,10 +2,13 @@
 import React from "react";
 import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
+import { useDispatch } from "react-redux";
+import { addToFavActoin, playSongAction } from "../redux/actions";
 
 export default function ArtistPage() {
   const params = useParams();
   const artistID = params.artistId;
+  const dispatch = useDispatch();
   const [artistData, setArtistData] = useState();
   const [tracklist, setTracklist] = useState();
 
@@ -15,9 +18,10 @@ export default function ArtistPage() {
 
   let getArtist = async () => {
     const response = await fetch(
-      "https://striveschool-api.herokuapp.com/api/deezer/artist/" + artistID
+      `https://striveschool-api.herokuapp.com/api/deezer/artist/${artistID}`
     );
     const artist = await response.json();
+    console.log(artist);
     setArtistData(artist);
     console.log(artistData);
     const trackData = await artist.tracklist;
@@ -52,7 +56,7 @@ export default function ArtistPage() {
             <div className="artist-container mt-3">
               <div className="row w-25 mt-3 ml-3 d-flex align-items-center">
                 <div className="green-circle d-flex justify-content-center align-items-center">
-                  <i className="fa-solid fa-pause"></i>
+                  <i class="bi bi-play-fill"></i>
                 </div>
                 <div className="follow ml-4 mt-1">
                   <button
@@ -63,7 +67,7 @@ export default function ArtistPage() {
                   </button>
                 </div>
                 <div className="more-info ml-4 mt-2">
-                  <i className="fa-solid fa-ellipsis"></i>
+                  <i class="bi bi-three-dots"></i>
                 </div>
               </div>
               <div className="headings d-flex justify-content-between mt-4">
@@ -72,31 +76,40 @@ export default function ArtistPage() {
               </div>
               <div className="content h-100 d-flex">
                 <div className="songs-container mt-3 ml-4 d-flex flex-column">
-                  {/* {tracklist.map((song) => (
-                    <div className="song d-flex align-items-center mb-3">
-                      <div className="track-number">{"index" + 1}</div>
-                      <div className="album-thumbnail-container">
-                        <img
-                          className="album-thumbnail mr-3"
-                          src={song.album.cover_small}
-                          alt="album"
-                        />
+                  {tracklist ? (
+                    tracklist.data.map((song, i) => (
+                      <div
+                        className="song d-flex align-items-center mb-3"
+                        onClick={() => dispatch(playSongAction(song))}
+                      >
+                        <div className="track-number">{i + 1}</div>
+                        <div className="album-thumbnail-container">
+                          <img
+                            className="album-thumbnail mr-3"
+                            src={song.album.cover_small}
+                            alt="album"
+                          />
+                        </div>
+                        <div className="song-title">
+                          <span>{song.title}</span>
+                        </div>
+                        <div className="play-counter">
+                          <span>{song.rank.toLocaleString("en-US")}</span>
+                        </div>
+                        <i
+                          className="bi bi-heart iconheart"
+                          onClick={() => dispatch(addToFavActoin(song))}
+                        ></i>
+                        <span className="song-length mr-3">
+                          {(song.duration - (song.duration %= 60)) / 60 +
+                            (9 < song.duration ? ":" : ":0") +
+                            song.duration}
+                        </span>
                       </div>
-                      <div className="song-title">
-                        <span></span>
-                      </div>
-                      <div className="play-counter">
-                        <span>${song.rank.toLocaleString("en-US")}</span>
-                      </div>
-                      <i className="fa-regular fa-heart iconheart"></i>
-                      <span className="song-length mr-3">
-                        $
-                        {(song.duration - (song.duration %= 60)) / 60 +
-                          (9 < song.duration ? ":" : ":0") +
-                          song.duration}
-                      </span>
-                    </div>
-                  ))} */}
+                    ))
+                  ) : (
+                    <div></div>
+                  )}
                 </div>
 
                 <div className="artist-pick h-25 d-flex">

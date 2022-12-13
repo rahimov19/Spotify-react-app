@@ -33,7 +33,7 @@ body {
 }
 
 .footer {
-  position: fixed;
+  position: sticky;
   bottom: 0;
   background: #181818;
   height: 10vh;
@@ -109,6 +109,7 @@ span.col-10 {
   font-weight: 300;
   font-size: 0.9rem;
   color: #ffffff;
+  cursor: pointer;
 }
 .playlists::-webkit-scrollbar-track {
   background: #000000;
@@ -200,7 +201,7 @@ span.col-10 {
   border-radius: 2px;
 }
 .footer {
-  position: fixed;
+  position: sticky;
   width: 100%;
   bottom: 0;
   margin: 0;
@@ -502,6 +503,7 @@ a:hover {
 .bi-caret-right,
 .bi-caret-left {
   color: #d9d9d9;
+  cursor: pointer;
 }
 .top-content-bar {
   position: absolute;
@@ -671,7 +673,8 @@ a:hover {
   margin: 0;
 }
 #player {
-  width: 100%;
+  width: 100% !important;
+  height: auto !important;
 }
 .searchbuttons {
   border-radius: 18px !important;
@@ -821,4 +824,62 @@ button {
   text-overflow: ellipsis;
   overflow: hidden;
   white-space: nowrap;
+}
+#volumeBar {
+  width: 20%;
+}
+input[type="range"] {
+  -webkit-appearance: none;
+  margin-right: 15px;
+  width: 200px;
+  height: 7px;
+  background: rgba(255, 255, 255, 0.6);
+  border-radius: 5px;
+  background-image: linear-gradient(#3e0000, #3e0000);
+  background-size: 70% 100%;
+  background-repeat: no-repeat;
+}
+input[type="range"]::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  height: 20px;
+  width: 20px;
+  border-radius: 50%;
+  background: #ffffff;
+  cursor: ew-resize;
+  box-shadow: 0 0 2px 0 #555;
+  transition: background 0.3s ease-in-out;
+}
+
+input[type="range"]::-moz-range-thumb {
+  -webkit-appearance: none;
+  height: 15px;
+  width: 15px;
+  border-radius: 50%;
+  background: #ffffff;
+  cursor: ew-resize;
+  box-shadow: 0 0 2px 0 #555;
+  transition: background 0.3s ease-in-out;
+}
+
+input[type="range"]::-ms-thumb {
+  -webkit-appearance: none;
+  height: 15px;
+  width: 15px;
+  border-radius: 50%;
+  background: #ffffff;
+  cursor: ew-resize;
+  box-shadow: 0 0 2px 0 #555;
+  transition: background 0.3s ease-in-out;
+}
+
+input[type="range"]::-webkit-slider-thumb:hover {
+  background: #00400b;
+}
+
+input[type="range"]::-moz-range-thumb:hover {
+  background: #00400b;
+}
+
+input[type="range"]::-ms-thumb:hover {
+  background: #00400b;
 }

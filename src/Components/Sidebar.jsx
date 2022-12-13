@@ -54,7 +54,11 @@ export default function Sidebar() {
         <div className="playlists mt-2 pt-1 overflow-auto">
           {songList ? (
             songList.map((song) => (
-              <p className="m-0" onClick={() => dispatch(playSongAction(song))}>
+              <p
+                className="m-0"
+                key={song.id}
+                onClick={() => dispatch(playSongAction(song))}
+              >
                 {song.artist.name} - {song.title}
               </p>
             ))

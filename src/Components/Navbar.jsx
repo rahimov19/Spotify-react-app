@@ -18,10 +18,10 @@ export default function Navbar() {
     <div className="row m-3 top-content-bar">
       <div className="nav-controls d-flex justify-content-between align-items-center">
         <div className="nav-circle mr-3 d-flex justify-content-center align-items-center">
-          <i className="bi bi-caret-left"></i>
+          <i className="bi bi-caret-left" onClick={() => navigate(-1)}></i>
         </div>
         <div className="nav-circle-inactive d-flex justify-content-center align-items-center">
-          <i className="bi bi-caret-right"></i>
+          <i className="bi bi-caret-right" onClick={() => navigate(+1)}></i>
         </div>
         <i className="bi bi-search lupa"> </i>{" "}
         <input

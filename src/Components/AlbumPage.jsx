@@ -3,7 +3,7 @@ import React from "react";
 import { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
 import { useDispatch } from "react-redux";
-import { addToFavActoin } from "../redux/actions";
+import { addToFavActoin, playSongAction } from "../redux/actions";
 export default function AlbumPage() {
   const dispatch = useDispatch();
   const params = useParams();
@@ -86,6 +86,7 @@ export default function AlbumPage() {
                   <li
                     className="list-group-item row1 col-12 d-flex justify-content-between tracklist-album p-0"
                     key={song.id}
+                    onClick={() => dispatch(playSongAction(song))}
                   >
                     <div className="song row">
                       <span>{[i + 1]}</span>

@@ -2,6 +2,7 @@
 import React from "react";
 import { useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
+import { Link } from "react-router-dom";
 import { fetchSearch } from "../redux/actions";
 
 export default function SearchMain() {
@@ -28,7 +29,10 @@ export default function SearchMain() {
 
           <div className="row" id="mainrow">
             <div className="col-3" id="leftSearch">
-              <a href="/{searchData.data[0].album.id}" className="aleftInside">
+              <Link
+                to={`/album/${searchData.data[0].album.id}`}
+                className="aleftInside"
+              >
                 <div className="leftInside">
                   <img
                     src={searchData.data[0].album.cover_medium}
@@ -38,13 +42,13 @@ export default function SearchMain() {
                   <h3>{searchData.data[0].album.title}</h3>
                   <p>{searchData.data[0].artist.name}</p>
                 </div>
-              </a>
+              </Link>
             </div>
             <div className="col-9">
               <ul id="rightSearch">
                 {searchData.data.slice(0, 6).map((song) => (
                   <li>
-                    <a href="/" className="row col-12 songslist">
+                    <span className="row col-12 songslist">
                       <img src={song.album.cover_small} alt="" />
                       <div className="spanText col-10">
                         <span>{song.artist.name} </span>
@@ -55,7 +59,7 @@ export default function SearchMain() {
                           (9 < song.duration ? ":" : ":0") +
                           song.duration} */}
                       </span>
-                    </a>
+                    </span>
                   </li>
                 ))}
               </ul>
@@ -64,7 +68,7 @@ export default function SearchMain() {
           <h2 id="h2Albums">Albums</h2>
           <div className="row" id="searchAlbums">
             {searchData.data.slice(0, 6).map((album) => (
-              <a className="col-2" href="/">
+              <Link to={`/album/${album.album.id}`} className="col-2">
                 <div className="col-12">
                   <div className="searchCard">
                     <img
@@ -76,13 +80,13 @@ export default function SearchMain() {
                     <p>{album.artist.name}</p>
                   </div>
                 </div>
-              </a>
+              </Link>
             ))}
           </div>
           <h2 id="h2Artists">Artists</h2>
           <div className="row" id="searchArtists">
             {searchData.data.slice(0, 6).map((artist) => (
-              <a className="col-2" href="/">
+              <Link to={`/artist/${artist.artist.id}`} className="col-2">
                 <div className="col-12">
                   <div className="searchCard">
                     <img
@@ -94,7 +98,7 @@ export default function SearchMain() {
                     <p>Artist</p>
                   </div>
                 </div>{" "}
-              </a>
+              </Link>
             ))}
           </div>
         </div>
