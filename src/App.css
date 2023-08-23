@@ -47,9 +47,6 @@ span.col-10 {
   margin-left: -10.5em;
   padding-right: 10.5em;
 }
-.logo {
-  width: 40%;
-}
 
 .sidebar a {
   color: #ffffff;
@@ -296,8 +293,8 @@ span.col-10 {
 
 .artist-container {
   position: relative;
-  width: 100%;
-  height: 55vh;
+  width: 66vw;
+  height: 100%;
   background: rgb(62, 62, 62);
   background: linear-gradient(
     180deg,
@@ -324,7 +321,8 @@ span.col-10 {
 
 .songs-container {
   width: 75%;
-  height: 20vh;
+  height: 100%;
+  min-height: 55vh;
   font-weight: 300;
   font-size: 0.9rem;
 }
@@ -420,7 +418,7 @@ span.col-10 {
   border-radius: 20px;
   height: 2.5em;
   padding-left: 2.6em;
-  width: 20em;
+  width: 150%;
 }
 .sidecards {
   /* width: 12.5%; */
@@ -442,6 +440,31 @@ span.col-10 {
   height: 95px;
   /* width: 80px; */
   padding: 0;
+}
+.cardCol {
+  width: 18em !important;
+  height: 10em;
+  margin-bottom: 1em;
+}
+.sidetext {
+  -webkit-box-orient: vertical;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: normal;
+}
+#topsidecards {
+  height: 20em;
+  overflow: hidden;
+}
+#firstAlbumRow {
+  height: 20em;
+  overflow: hidden;
+}
+#secondAlbumRow {
+  height: 20em;
+  overflow: hidden;
 }
 .sidecards a {
   width: 100%;
@@ -494,6 +517,7 @@ img.col-11 {
 }
 #undersearch {
   margin-top: 4em;
+  padding-top: 1em;
   padding-bottom: 2em;
   color: whitesmoke;
 }
@@ -505,12 +529,14 @@ a:hover {
   color: #d9d9d9;
   cursor: pointer;
 }
+
 .top-content-bar {
   position: absolute;
+  /* left: 18em; */
   left: 17% !important;
-  width: 80%;
-  display: flex;
-  /* justify-content: space-between; */
+  /* width: 65%; */
+  right: 3em;
+
   z-index: 1;
 }
 li {
@@ -531,16 +557,37 @@ li {
   background-color: #555;
   padding: 1em;
   border: 2px solid black;
-  width: 100% !important;
+  width: 15em !important;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
 }
 .searchAlbumCard h5 {
+  width: 12em;
   overflow: hidden;
+  align-self: center;
   text-overflow: ellipsis;
-  white-space: nowrap;
+  text-align: center;
+}
+.dropdownButtons div {
+  background-color: transparent !important;
+  margin-left: 0 !important;
+  padding-left: 0 !important;
+}
+.dropdownButtons a {
+  background-color: #242424;
+  border-radius: 15px;
+  text-decoration: none;
+  color: #ffffff !important;
+}
+.dropdownButtons button {
+  margin-block: 0.2em;
 }
 .searchAlbumCard img {
   width: 13em;
   margin-bottom: 0.7em;
+
   /* margin-left: 1em; */
 }
 .bi {
@@ -592,7 +639,7 @@ li span:nth-child(3) {
 #album-cover-album {
   -webkit-box-shadow: 0px 0px 50px 1px rgba(0, 0, 0, 0.66);
   box-shadow: 0px 0px 50px 1px rgba(0, 0, 0, 0.66);
-  object-fit: cover;
+  object-fit: contain;
 }
 #toppart {
   color: #d9d9d9;
@@ -637,6 +684,7 @@ li span:nth-child(3) {
 #artist-small-pic {
   width: 30px;
   border-radius: 30px;
+  object-fit: contain;
 }
 a {
   text-decoration: none;
@@ -689,9 +737,9 @@ body {
 }
 
 .logo {
-  width: 200px;
+  width: 100%;
   padding: 0.5em;
-  margin-left: 1em;
+  margin-right: 2em;
 }
 
 .divider {
@@ -810,7 +858,8 @@ button {
 #navbarbuttons {
   margin-left: 1em;
   display: flex;
-  justify-content: space-between;
+
+  /* justify-content: space-between; */
   width: 20%;
 }
 #searchAlbums,
@@ -824,6 +873,17 @@ button {
   text-overflow: ellipsis;
   overflow: hidden;
   white-space: nowrap;
+}
+.searchCard {
+  width: 5.5em;
+  margin-inline: 1em;
+}
+.sideImg {
+  width: 100%;
+}
+.imgSearchMain {
+  width: 2em !important;
+  object-fit: cover;
 }
 #volumeBar {
   width: 20%;

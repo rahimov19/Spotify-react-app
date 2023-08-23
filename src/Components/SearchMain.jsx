@@ -19,16 +19,16 @@ export default function SearchMain() {
       {searchData.data ? (
         <div className="col-10 main-content">
           <div className="row" id="undersearch">
-            <div className="col-3" id="h3BR">
+            <div className="col-3 col-md-2 " id="h3BR">
               <h3>Best Result:</h3>
             </div>
-            <div className="col-9 pl-5" id="h3S">
+            <div className="col-9 col-md-10 " id="h3S">
               <h3>Songs:</h3>
             </div>
           </div>
 
           <div className="row" id="mainrow">
-            <div className="col-3" id="leftSearch">
+            <div className="col-3 col-md-2 " id="leftSearch">
               <Link
                 to={`/album/${searchData.data[0].album.id}`}
                 className="aleftInside"
@@ -44,21 +44,17 @@ export default function SearchMain() {
                 </div>
               </Link>
             </div>
-            <div className="col-9">
+            <div className="col-9 col-md-10 d-flex pl-5">
               <ul id="rightSearch">
                 {searchData.data.slice(0, 6).map((song) => (
                   <li>
-                    <span className="row col-12 songslist">
+                    <span className="row songslist">
                       <img src={song.album.cover_small} alt="" />
-                      <div className="spanText col-10">
+                      <div className="spanText col">
                         <span>{song.artist.name} </span>
                         <span>{song.title}</span>
                       </div>
-                      <span className="duration">
-                        {/* {(song.duration - (song.duration %= 60)) / 60 +
-                          (9 < song.duration ? ":" : ":0") +
-                          song.duration} */}
-                      </span>
+                      <span className="duration"></span>
                     </span>
                   </li>
                 ))}
@@ -66,10 +62,13 @@ export default function SearchMain() {
             </div>
           </div>
           <h2 id="h2Albums">Albums</h2>
-          <div className="row" id="searchAlbums">
+          <div
+            className="row flex-sm-column flex-md-row justify-content-center align-items-center"
+            id="searchAlbums"
+          >
             {searchData.data.slice(0, 6).map((album) => (
-              <Link to={`/album/${album.album.id}`} className="col-2">
-                <div className="col-12">
+              <Link to={`/album/${album.album.id}`}>
+                <div className="col">
                   <div className="searchCard">
                     <img
                       className="cardimg"
@@ -84,10 +83,13 @@ export default function SearchMain() {
             ))}
           </div>
           <h2 id="h2Artists">Artists</h2>
-          <div className="row" id="searchArtists">
+          <div
+            className="row flex-sm-column flex-md-row justify-content-center align-items-center"
+            id="searchArtists"
+          >
             {searchData.data.slice(0, 6).map((artist) => (
-              <Link to={`/artist/${artist.artist.id}`} className="col-2">
-                <div className="col-12">
+              <Link to={`/artist/${artist.artist.id}`}>
+                <div className="col">
                   <div className="searchCard">
                     <img
                       className="cardimg"

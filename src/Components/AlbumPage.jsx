@@ -4,10 +4,10 @@ import { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
 import { useDispatch } from "react-redux";
 import { addToFavActoin, playSongAction } from "../redux/actions";
+import { Col, Row } from "react-bootstrap";
 export default function AlbumPage() {
   const dispatch = useDispatch();
   const params = useParams();
-  console.log(params);
   const albumID = params.albumId;
   const [albumData, setAlbumData] = useState();
   useEffect(() => {
@@ -19,7 +19,6 @@ export default function AlbumPage() {
     );
     const album = await response.json();
     setAlbumData(album);
-    console.log(albumData);
   }
 
   return (
@@ -59,52 +58,47 @@ export default function AlbumPage() {
             </div>
           </div>
           <div className="col-12" id="main-container-album">
-            {/* <div className="row justify-content-start">
-              <div className="col-1 mt-3 play-button">
-                <i className="bi bi-play-circle-fill" id="play-icon"></i>
-              </div>
-              <div className="col-1 mt-3">
-                <i className="bi bi-heart"></i>
-              </div>
-              <div className="col-1 mt-3">
-                <i className="bi bi-three-dots"></i>
-              </div>
-            </div> */}
             <div className="col-12 p-0">
               <ul className="list-group" id="tracklist">
-                <div className="row">
-                  <li className="list-group-item row1 col-12 d-flex justify-content-between tracklist-album p-0">
-                    <span className="col-1 text-start align-items-center border-bottom">
+                <Row className="list-group-item row1 col-12 d-flex justify-content-between tracklist-album p-0">
+                  <Col xs={1}>
+                    <span className="text-start d-flex justify-content-center align-items-center border-bottom">
                       #
                     </span>
+                  </Col>
+                  <Col xs={10} className="w-100">
+                    <span className=" border-bottom d-flex justify-content-start align-items-center">
+                      Title
+                    </span>
+                  </Col>
+                  <Col xs={1} className="">
+                    <i className=" d-flex justify-content-center align-items-end bi bi-clock border-bottom mt-2"></i>
+                  </Col>
+                </Row>
 
-                    <span className=" col-10 border-bottom">Title</span>
-                    <i className="col-1 text-center bi bi-clock border-bottom"></i>
-                  </li>
-                </div>
                 {albumData.tracks.data.map((song, i) => (
-                  <li
-                    className="list-group-item row1 col-12 d-flex justify-content-between tracklist-album p-0"
+                  <Row
+                    className="list-group-item row1 col-12 d-flex justify-content-center tracklist-album p-0"
                     key={song.id}
                     onClick={() => dispatch(playSongAction(song))}
                   >
-                    <div className="song row">
+                    <Col xs={1} className="song  d-flex justify-content-center">
                       <span>{[i + 1]}</span>
-                      <div className="artisttitle">
-                        <span>{song.title}</span>
-                        <span className="fw-light">{song.artist.name} </span>
-                      </div>
-                      <span className="song-length">
-                        <i
-                          className="bi bi-heart iconheart"
-                          onClick={() => dispatch(addToFavActoin(song))}
-                        ></i>
-                        {(song.duration - (song.duration %= 60)) / 60 +
-                          (9 < song.duration ? ":" : ":0") +
-                          song.duration}
-                      </span>
-                    </div>{" "}
-                  </li>
+                    </Col>
+                    <Col xs={10} className="artisttitle">
+                      <span>{song.title}</span>
+                      <span className="fw-light">{song.artist.name} </span>
+                    </Col>
+                    <Col xs={1} className="song-length">
+                      <i
+                        className="bi bi-heart iconheart"
+                        onClick={() => dispatch(addToFavActoin(song))}
+                      ></i>
+                      {(song.duration - (song.duration %= 60)) / 60 +
+                        (9 < song.duration ? ":" : ":0") +
+                        song.duration}
+                    </Col>
+                  </Row>
                 ))}
               </ul>
             </div>

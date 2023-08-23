@@ -37,15 +37,15 @@ export default function PlayerComponent() {
               <span className="footer-song">{song.title}</span>
               <span className="footer-artist">{song.artist.name}</span>
             </div>
-            <div className="album-info-icons ml-4">
-              <i className="bi bi-heart-fill mr-2"></i>
-              <i className="bi bi-fullscreen ml-2"></i>
+            <div className="album-info-icons ml-4 d-none d-md-block">
+              <i className="bi bi-heart-fill mr-2 "></i>
+              <i className="bi bi-fullscreen ml-2 "></i>
             </div>
           </div>
           <div className="col-5 footer-middle d-flex flex-column align-items-center">
             <div className="player-controls d-flex justify-content-between align-items-center">
-              <i className="bi bi-shuffle"></i>
-              <i className="bi bi-skip-backward-circle-fill"></i>
+              <i className="bi bi-shuffle d-none d-md-block"></i>
+              <i className="bi bi-skip-backward-circle-fill "></i>
               <div className="play-pause paused">
                 <div
                   className="circle d-flex justify-content-center align-items-center "
@@ -63,7 +63,7 @@ export default function PlayerComponent() {
               </div>
               <i className="bi bi-fast-forward-circle-fill"></i>
               <i
-                className="bi bi-repeat"
+                className="bi bi-repeat d-none d-md-block"
                 onClick={() => {
                   setLoop(!isLooped);
                 }}
@@ -83,8 +83,8 @@ export default function PlayerComponent() {
           </div>
           <div className="col-3 footer-right d-flex justify-content-end align-items-center">
             <div className="footer-right-icons">
-              <i className="bi bi-list"></i>
-              <i className="bi bi-broadcast"></i>
+              <i className="bi bi-list d-none d-md-block"></i>
+              <i className="bi bi-broadcast d-none d-md-block"></i>
               <span onClick={() => setMuted(!isMuted)}>
                 {isMuted ? (
                   <i className="bi bi-volume-mute-fill"></i>

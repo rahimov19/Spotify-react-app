@@ -2,15 +2,16 @@ import React from "react";
 import { Link } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
 import { playSongAction } from "../redux/actions";
+import { Col } from "react-bootstrap";
 
 export default function Sidebar() {
   const songList = useSelector((state) => state.player.favSongs);
   const dispatch = useDispatch();
   return (
     <>
-      <div className="col-2 sidebar pl-3">
+      <Col className="sidebar pl-3 d-none d-sm-block h-100">
         <Link to={"/"}>
-          <img className="logo mt-2" src="img/logo.png" alt="logo" />
+          <img className="logo mt-2" src="/img/logo.png" alt="logo" />
         </Link>
 
         <div className="links-container d-flex flex-column mt-3 ml-0">
@@ -72,7 +73,7 @@ export default function Sidebar() {
           </div>
           <a href="/main">Install App</a>
         </div>
-      </div>
+      </Col>
     </>
   );
 }

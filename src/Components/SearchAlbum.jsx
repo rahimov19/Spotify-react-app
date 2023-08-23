@@ -24,11 +24,11 @@ export default function SearchAlbum() {
             </div>
           </div>
 
-          <div className="row" id="mainrow">
-            <div id="artistsbody" className="row col-12 ml-3">
+          <div className="row " id="mainrow">
+            <div id="artistsbody" className="row col-12 ">
               {searchData.data.slice(0, 30).map((album) => (
                 <div
-                  className="searchAlbumCard col-2 mb-3"
+                  className="searchAlbumCard col mb-3 mx-5"
                   onClick={() => navigate(`/album/${album.album.id}`)}
                 >
                   <img
